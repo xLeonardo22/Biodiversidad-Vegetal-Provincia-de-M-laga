@@ -26,6 +26,10 @@ los datos confirman la alta biodiversidad vegetal de Málaga.
 conocida riqueza de orquídeas silvestres de la zona, especialmente 
 del género *Ophrys*.
 
+## Resultados 
+
+![Top familias botánicas](results/figures/top_families.png)
+
 ## Datos
 
 Descargados directamente desde GBIF via pygbif:  
