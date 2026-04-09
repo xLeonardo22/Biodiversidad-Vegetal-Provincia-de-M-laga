@@ -1,11 +1,8 @@
-## 1. Descarga de datos desde GBIF
-GBIF es la mayor base de datos pública de biodiversidad del mundo. 
-Usamos pygbif para descargar ocurrencias reales de plantas en Málaga 
-filtradas por coordenadas geográficas.
-
+## 1. Librerías
 import pandas as pd
 from pygbif import occurrences as occ
 import os
+## 2. Descarga de datos desde GBIF
 os.makedirs("C:/Users/minec/Desktop/malaga-biodiversity/data/raw", exist_ok = True)
 
 print("Download da GBIF")
@@ -19,11 +16,8 @@ print(f"Records descargados: {len(df)}")
 print(f"Colonne dispinibili {len(df.columns)}")
 print(df[['species', 'decimalLatitude', 'decimalLongitude', 'elevation']].head(10))
 
-## 2. Limpieza y filtrado
-Selección de columnas relevantes y filtrado geográfico para mantener 
-solo los registros dentro de la provincia de Málaga.
-
-#creamos dicionario y manteneos columas utiles
+## 3. Limpieza y filtrado de columna
+#Creamos dicionario y manteneos columas utiles
 cols = ['species', 'decimalLatitude', 'decimalLongitude', 
         'elevation', 'year', 'stateProvince', 'municipality']
 df_clean = df[cols].copy()
@@ -44,13 +38,7 @@ print(f"Record filtrados Málaga: {len(df_malaga)}")
 print(f"Especies unicas: {df_malaga['species'].nunique()}")
 print(f"Record con elevacióne: {df_malaga['elevation'].notna().sum()}")
 
-## 3. Familias botánicas más representadas
-Análisis de la riqueza taxonómica por familia botánica. La dominancia 
-de Orchidaceae refleja la conocida riqueza de orquídeas silvestres 
-de la provincia, especialmente del género Ophrys.
-
 #Tenemos solo 38 record con elevación, por eso vamos a descargar más datos de Malága
-
 all_records=[] #creamos lista para datos
 
 #Descargamos más datos de Malága
