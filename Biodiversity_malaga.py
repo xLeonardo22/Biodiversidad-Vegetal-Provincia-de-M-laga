@@ -30,7 +30,7 @@ df_malaga = df_clean[(df_clean['lat'].between(36.0, 37.5)) & (df_clean['lon'].be
 df_malaga = df_malaga.dropna(subset=['species'])
 
 #Y salvamos en file csv
-df_malaga.to_csv('../data/raw/malaga_plantas.csv', ...)
+df_malaga.to_csv('../data/raw/malaga_plantas.csv', index=False)
 
 print(f"Record total Andalucía: {len(df_clean)}")
 print(f"Record filtrados Málaga: {len(df_malaga)}")
@@ -69,7 +69,7 @@ df_malaga2.columns = ['species', 'lat', 'lon', 'year', 'family', 'province', 'lo
 df_malaga2 = df_malaga2.dropna(subset=['species'])
 df_malaga2 = df_malaga2[df_malaga2['species'].str.strip() != '']
 
-df_malaga2.to_csv('../data/raw/malaga_plantas.csv', ...)
+df_malaga2.to_csv('../data/raw/malaga_plantas.csv', index = False)
 
 print(f"Record totali: {len(df_malaga2)}")
 print(f"Specie uniche: {df_malaga2['species'].nunique()}")
@@ -98,6 +98,6 @@ for bar, val in zip(bars, top_families.values[::-1]):
             str(val), va='center', fontsize=10)
 
 plt.tight_layout()
-plt.savefig('../results/figures/top_families.png', ...)
+plt.savefig('../results/figures/top_families.png', dpi=150, bbox_inches='tight')
 plt.show()
 print("Salvato!")
